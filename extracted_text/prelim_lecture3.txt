@@ -1,0 +1,126 @@
+
+--- Page 1 ---
+EECS502 Stochastic Processes Lecture 3 - 01/16/2020
+Review of Probability Theory & Stochastic Processes Continued
+Lecturer: Vijay G. Subramanian Scribes: Kang Gong
+1 Probability Theory
+Probability Space (Ω ,F,P)
+Definition 1 (π-system) .A collection S of subset of Ωis aπ-system if it is closed under finite intersection.
+Theorem 2. Given two probability distributions P1andP2such that they are the same on a π-system S,
+then they are also the same on the σ(S), i.e.,
+if∀A∈S,P1(A) =P2(A),
+then ∀B∈σ(S),P1(B) =P2(B).
+Remark This theorem means that specifying the values on a π-system uniquely specifies the probability
+distribution on the smallest σ−algebra containing it.
+Example 3. For commonly used Ω = R,S={(−∞, x] :x∈R},Sis aπ-system since if x1> x 2,
+(−∞, x1]∩(−∞, x2] = (−∞, x2]∈S. And PX((−∞, x]) =FX(x) is the cdf for random variable X.
+Example 4. Random processes {Xt}t∈Rall takes values in R.
+Consider Borel σ-algebra B(R) and π-system {Bti:Bti∈ B(R)}. We can also use {Bti:Bti=
+(−∞, x]∀x∈R}.
+LetBn=Qn
+i=1Bti, whereQmeans Cartesian Product, i.e., x= (x1, ..., x n)∈Bn⇒xi∈Btifor any i.
+The smallest σ-algebra containing such a π-system is called the Borel σ-algebra. And ∀t1< t 2<···<
+tn∈Rand∀n∈N, we have
+P(Bn) =P(Xt1∈Bt1, ..., X tn∈Btn),
+i.e., specifying all finite dimensional marginals is equivalent to specifying the distribution of the random
+processes. The alternate specification specifies the joint CDF for all finite-dimensional collections.
+Definition 5 (strictly stationary) .A process {Xt:t∈R}is (strictly) stationary if for any finite set of
+indices t1< t 2<···< tn∈Rand any τ∈Rs.t.
+P(Xt1∈B1, Xt2∈B2, ..., X tn∈Bn)
+=P(Xt1+τ∈B1, Xt2+τ∈B2, ..., X tn+τ∈Bn).
+Remark The strict stationarity means that any time shifts don’t change the distribution of the process.
+Example 6. Let{Xn}n∈Zbe iid. Bernoulli(1
+2) random variables, which is a stationary process.
+Consequence 1: P(Xt∈B) for all B∈ B(R) is independent of t.
+FXt(x) is independent of t.
+µt=E[Xt] is independent of t(if it exists).
+Consequence 2: P(Xt∈B1, Xs∈B2) =P(Xt−s∈B1, X0∈B2) is a function of ( t−s), so are the
+covariance E[XtXs] and the correlation function E[(Xt−µt)(Xs−µs)] =RX(t−s).
+1
+
+--- Page 2 ---
+Definition 7 (wide-sense stationary) .A process {Xt}t∈Ris wide-sense stationary (WSS) if
+µt≜E[Xt]≡µ,(Not a function of t)
+RX(t, s)≜E[(Xt−µt)(Xs−µs)] =RX(t−s).
+Remark The strict stationary process is also WSS while the reverse is only true for Gaussian processes.
+2
+
+--- Page 3 ---
+Definition 8 (independence) .X1andX2are independent if
+•Joint Distribution: P(X1∈B1, X2∈B2) =P(X1∈B1)P(X2∈B2)∀B1, B2∈ B(R).
+•Moments: For all separable functions f(x1, x2) =f1(x1)f2(x2),E[f(X1, X2)] =E[f1(X1)]E[f2(X2)].
+The Gaussian random variables X1,X2are independent iff E[X1X2] =E[X1]E[X2].
+•Characteristic function: φX(s)≜E[eisX]
+E[eis1X1+is2X2] =E[eis1X1]E[eis2X2]∀s1, s2. If the characteristic function has a product form, then
+independence, and hence, the reverse is also true.
+Moment generating function: MGF X(θ)≜E[eθX],θ∈R.
+E[eθ1X1+θ2X2] =E[eθ1X1]E[eθ2X2]∀θ1, θ2.
+•σ-algebra: Suppose X1,X2take values in probability space (E1,E1,P)and(E2,E2,P)respectively.
+σ(X1)andσ(X2)are independent if ∀A1∈ E 1,A2∈ E 2
+E[1A1(X1)1A2(X2)]
+=P(X1∈A1, X2∈A2)
+=P(X1∈A1)P(X2∈A2)
+=E[1A1(X1)]E[1A2(X2)].
+Random variables are independent iffthe smallest σ-algebras σ(X1)andσ(X2)are independent.
+Definition 9 (Bayes’s rule) .The conditional probability is defined as
+P(A|B) =
+
+P(A∩B)
+P(B)ifP(B)>0,
+undefined otherwise .
+Remark Conditioning on a set or a random variable is actually equivalent to conditioning on a σ-algebra.
+Example 10. P(A|B) =E[1A(X)|1B(X) = 1] with PX(X∈B) =P(B) and PX(X∈A∩B) =P(A∩B).
+Given a set B, conditioning on σ(B) is equivalent to conditioning on 1B(X) in that σ(B) ={∅, B, Bc,Ω}=
+σ(1B(X)).
+Example 11. Given random variable Xon a probability space (Ω ,F,P) and σ-algebra G ⊂ F , we define
+the conditional expectation E[X|G] as follows. Let Ybe another random variable, and ( X,Y) have some
+joint distribution. Then, we have E[X|Y] =E[X|σ(Y)].
+Definition 12 (conditional expectation) .For random variable Xandσ-algebra G ⊂ F ,E[X|G]is measurable
+with respect to G. And for all A∈ G,E[X1A] =E[E[X|G]·1A]. Specifically, E[X|Y]is a measurable function
+ofY, i.e., g(Y). For every function of Y,f(Y), we have
+E[Xf(Y)] =E[E[X|Y]·f(Y)]
+=E[g(Y)·f(Y)].
+Example 13. E[X] =E[X|{∅,Ω}] is constant, since the only functions measurable under {∅,Ω}are
+constants.
+Example 14. XandYhave a joint distribution (discrete) PX,Y(x, y)∀x, y∈Z.
+g(y) =
+
+P
+x∈ZxPX|Y(x|y) =P
+x∈Zx·PX,Y(x, y)
+PY(y)ifPY(y)>0,
+0 otherwise.
+E[X|Y] =g(Y).
+3
+
+--- Page 4 ---
+Example 15. XandYhave a joint density (continuous) fX,Y(x, y)∀x, y∈R.
+g(y) =(R
+xfX|Y(x|y)dx=R
+x·fX,Y (x,y)
+fY(y)dxiffY(y)>0,
+0 otherwise.
+E[X|Y] =g(Y).
+IfXandYare jointly Gaussian, E[X|Y] =a+bY, a linear function of Y.
+2 Stochastic Process
+Definition 16 (Markov process) .Given an index set Iand probability space (E,E,P), a random process
+{Xi}i∈Itaking values in Eis Markov if for any finite sequence of indices i1< i 2<···< in∈I,
+∀A∈ E,P(Xin∈A|Xi1, Xi2, ..., X in−1)
+=P(Xin∈A|Xin−1).
+Remark For a Markov process {Xi}i∈I, the future is conditionally independent of the past given the
+present.
+Xi1
+i1Xi2
+i2···
+···Xin−2
+in−2Xin−1present
+in−1Xin
+infuture
+past
+Example 17. Suppose the discrete Markov process {Xi}i∈Zhas all positive conditional probabilities, then
+we have
+P(Xin=an, Xin−1=an−1, ..., X i1=a1)
+=P(Xin=an|Xin−1=an−1, ..., X i1=a1)P(Xin−1=an−1, ..., X i1=a1)
+=P(Xin=an|Xin−1=an−1)P(Xin−1=an−1, ..., X i1=a1)
+=P(Xin=an|Xin−1=an−1)P(Xin−1=an−1|Xin−2=an−2)···P(Xi2=a2|Xi1=a1)P(Xi1=a1).
+4
