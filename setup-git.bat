@@ -13,10 +13,14 @@ git commit -m "Initial commit: Add course structure and markdown templates"
 echo.
 echo Git repository initialized successfully!
 echo.
-echo Next steps:
-echo 1. Create a new repository on GitHub
-echo 2. Add the remote origin: git remote add origin [your-repo-url]
-echo 3. Push to GitHub: git push -u origin main
+echo Adding remote origin and pushing to GitHub...
+git remote add origin https://github.com/adityabn6/EECS-558.git
+git branch -M main
+git push -u origin main
+
+echo.
+echo Repository successfully pushed to GitHub!
+echo URL: https://github.com/adityabn6/EECS-558
 echo.
 echo Don't forget to fill in the markdown files with content from your PDFs!
 
